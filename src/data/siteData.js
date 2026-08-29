@@ -34,6 +34,7 @@ export const NAV_LINKS = [
   { label: "Fleet", to: "/fleet" },
   { label: "Clients Projects", to: "/projects" },
   { label: "Careers", to: "/careers" },
+  { label: "News", to: "/news" },
   { label: "Contact Us", to: "/contact" },
 ];
 

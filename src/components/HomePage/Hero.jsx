@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, MessageCircle, Mail, ArrowRight } from "lucide-react";
-import heroBg from "../../assets/landing-page-bg-img/bg-img-optimized.jpg";
+import heroBg from "../../assets/landing-page-bg-img/bg-img.png";
 import { COMPANY } from "../../data/siteData";
 
 const floatingContacts = [

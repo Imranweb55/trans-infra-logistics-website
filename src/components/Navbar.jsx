@@ -6,9 +6,10 @@ import { COMPANY, NAV_LINKS } from "../data/siteData";
 
 // Dropdown content for specific nav tabs only ("About Us" and "Services").
 // Every other tab in NAV_LINKS stays a plain link, untouched.
-// NOTE: dedicated routes/sections for these sub-items don't exist yet, so
-// each link points to its parent page ("/about" or "/services") for now —
-// update these `to` values once individual pages/sections are built.
+// NOTE: "About Us" sub-items don't have dedicated sections yet, so they
+// link to "/about" for now. "Services" sub-items deep-link into the real
+// Services page (/services?service=<param>), which reads that query
+// param and shows the matching service's detail panel.
 const NAV_SUBMENUS = {
   "About Us": [
     { label: "Company Profile", to: "/about" },
@@ -28,11 +29,14 @@ const NAV_SUBMENUS = {
     },
   ],
   Services: [
-    { label: "Services Overview", to: "/services" },
-    { label: "Surface Transportation", to: "/services" },
-    { label: "Cranes & Equipment", to: "/services" },
-    { label: "Mechanical Erection", to: "/services" },
-    { label: "Warehousing", to: "/services" },
+    { label: "Services Overview", to: "/services?service=overview" },
+    {
+      label: "Surface Transportation",
+      to: "/services?service=surface-transportation",
+    },
+    { label: "Cranes & Equipment", to: "/services?service=cranes-equipment" },
+    { label: "Mechanical Erection", to: "/services?service=erection" },
+    { label: "Warehousing", to: "/services?service=warehousing" },
   ],
 };
 
@@ -74,7 +78,7 @@ export default function Navbar() {
     // Fixed to the viewport (not just the top of the document) so the bar
     // stays visible the entire time the page is scrolled, on every page.
     <header className="fixed inset-x-0 top-0 z-50 w-full">
-      <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-5 pt-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between rounded-2xl bg-white/95 px-4 py-2 shadow-lg shadow-navy-950/10 backdrop-blur-sm lg:px-6">
           {/* Official company logo (image) */}
           <Link

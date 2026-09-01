@@ -46,6 +46,11 @@ export default function Navbar() {
   // which nested item (e.g. "Business Sectors") are currently expanded.
   const [openMobileMenu, setOpenMobileMenu] = useState(null);
   const [openMobileSubmenu, setOpenMobileSubmenu] = useState(null);
+  // Desktop dropdown state — controlled in JS (not pure CSS :hover) so a
+  // click can force-close the panel immediately, instead of it lingering
+  // open until the mouse happens to move away.
+  const [openDesktopMenu, setOpenDesktopMenu] = useState(null);
+  const [openDesktopSubmenu, setOpenDesktopSubmenu] = useState(null);
 
   // Close the mobile menu whenever the viewport is resized back to desktop.
   useEffect(() => {
@@ -74,12 +79,17 @@ export default function Navbar() {
     setOpenMobileSubmenu(null);
   };
 
+  const closeDesktopMenus = () => {
+    setOpenDesktopMenu(null);
+    setOpenDesktopSubmenu(null);
+  };
+
   return (
     // Fixed to the viewport (not just the top of the document) so the bar
     // stays visible the entire time the page is scrolled, on every page.
     <header className="fixed inset-x-0 top-0 z-50 w-full">
-      <div className="mx-auto max-w-7xl px-5 pt-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between rounded-2xl bg-white/95 px-4 py-2 shadow-lg shadow-navy-950/10 backdrop-blur-sm lg:px-6">
+      <div className="mx-auto max-w-[1600px] px-5 pt-4 sm:px-8 lg:px-10">
+        <div className="flex items-center justify-between gap-4 rounded-2xl bg-white/95 px-5 py-2 shadow-lg shadow-navy-950/10 backdrop-blur-sm lg:px-7">
           {/* Official company logo (image) */}
           <Link
             to="/"
@@ -96,15 +106,48 @@ export default function Navbar() {
           {/* Desktop nav links — every tab shares the same wrapper box
               (relative + pb-3) so all labels sit at the same baseline,
               whether or not they carry a dropdown. */}
-          <nav className="hidden flex-1 items-center justify-center gap-5 lg:mx-8 lg:flex xl:gap-7">
+          <nav className="hidden flex-1 items-center justify-center gap-4 lg:mx-6 lg:flex xl:gap-6">
             {NAV_LINKS.map((link) => {
               const submenu = NAV_SUBMENUS[link.label];
+              const isMenuOpen = openDesktopMenu === link.label;
+
+              if (!submenu) {
+                return (
+                  <div key={link.to} className="relative pb-3">
+                    <NavLink
+                      to={link.to}
+                      end={link.to === "/"}
+                      className={({ isActive }) =>
+                        `${navLinkClass({ isActive })} inline-flex items-center gap-1`
+                      }
+                    >
+                      {({ isActive }) => (
+                        <>
+                          {link.label}
+                          {isActive && (
+                            <span className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-accent-500" />
+                          )}
+                        </>
+                      )}
+                    </NavLink>
+                  </div>
+                );
+              }
 
               return (
-                <div key={link.to} className="group/nav relative pb-3">
+                <div
+                  key={link.to}
+                  className="relative pb-3"
+                  onMouseEnter={() => setOpenDesktopMenu(link.label)}
+                  onMouseLeave={() => {
+                    setOpenDesktopMenu(null);
+                    setOpenDesktopSubmenu(null);
+                  }}
+                >
                   <NavLink
                     to={link.to}
                     end={link.to === "/"}
+                    onClick={closeDesktopMenus}
                     className={({ isActive }) =>
                       `${navLinkClass({ isActive })} inline-flex items-center gap-1`
                     }
@@ -112,12 +155,12 @@ export default function Navbar() {
                     {({ isActive }) => (
                       <>
                         {link.label}
-                        {submenu && (
-                          <ChevronDown
-                            size={12}
-                            className="mt-0.5 opacity-60 transition-transform group-hover/nav:rotate-180"
-                          />
-                        )}
+                        <ChevronDown
+                          size={12}
+                          className={`mt-0.5 opacity-60 transition-transform ${
+                            isMenuOpen ? "rotate-180" : ""
+                          }`}
+                        />
                         {isActive && (
                           <span className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-accent-500" />
                         )}
@@ -125,62 +168,75 @@ export default function Navbar() {
                     )}
                   </NavLink>
 
-                  {/* Dropdown panel — vertical list, opens on hover */}
-                  {submenu && (
-                    <div className="invisible absolute left-0 top-full z-40 w-64 opacity-0 transition-all duration-150 group-hover/nav:visible group-hover/nav:opacity-100">
-                      <div className="flex flex-col gap-0.5 rounded-xl border border-neutral-100 bg-white p-2 shadow-xl">
-                        {submenu.map((item) =>
-                          item.children ? (
-                            <div
-                              key={item.label}
-                              className="group/sub relative"
-                            >
-                              <Link
-                                to={item.to}
-                                className="flex w-full items-center justify-between rounded-lg px-4 py-2.5 text-left text-xs font-semibold uppercase tracking-wide text-navy-900 transition-colors hover:bg-accent-500/10 hover:text-accent-600"
-                              >
-                                {item.label}
-                                <ChevronRight
-                                  size={13}
-                                  className="opacity-60"
-                                />
-                              </Link>
-
-                              {/* Nested flyout — vertical list, opens to the right */}
-                              <div className="invisible absolute left-full top-0 z-50 w-64 opacity-0 transition-all duration-150 group-hover/sub:visible group-hover/sub:opacity-100">
-                                <div className="flex flex-col gap-0.5 rounded-xl border border-neutral-100 bg-white p-2 shadow-xl">
-                                  {item.children.map((child) => (
-                                    <Link
-                                      key={child.label}
-                                      to={child.to}
-                                      className="block w-full rounded-lg px-4 py-2.5 text-left text-xs font-semibold uppercase tracking-wide text-navy-900 transition-colors hover:bg-accent-500/10 hover:text-accent-600"
-                                    >
-                                      {child.label}
-                                    </Link>
-                                  ))}
-                                </div>
-                              </div>
-                            </div>
-                          ) : (
+                  {/* Dropdown panel — vertical list, opens on hover, force-closes on click */}
+                  <div
+                    className={`absolute left-0 top-full z-40 w-64 transition-all duration-150 ${
+                      isMenuOpen ? "visible opacity-100" : "invisible opacity-0"
+                    }`}
+                  >
+                    <div className="flex flex-col gap-0.5 rounded-xl border border-neutral-100 bg-white p-2 shadow-xl">
+                      {submenu.map((item) => {
+                        const isSubOpen = openDesktopSubmenu === item.label;
+                        return item.children ? (
+                          <div
+                            key={item.label}
+                            className="relative"
+                            onMouseEnter={() =>
+                              setOpenDesktopSubmenu(item.label)
+                            }
+                            onMouseLeave={() => setOpenDesktopSubmenu(null)}
+                          >
                             <Link
-                              key={item.label}
                               to={item.to}
-                              className="block w-full rounded-lg px-4 py-2.5 text-left text-xs font-semibold uppercase tracking-wide text-navy-900 transition-colors hover:bg-accent-500/10 hover:text-accent-600"
+                              onClick={closeDesktopMenus}
+                              className="flex w-full items-center justify-between rounded-lg px-4 py-2.5 text-left text-xs font-semibold uppercase tracking-wide text-navy-900 transition-colors hover:bg-accent-500/10 hover:text-accent-600"
                             >
                               {item.label}
+                              <ChevronRight size={13} className="opacity-60" />
                             </Link>
-                          ),
-                        )}
-                      </div>
+
+                            {/* Nested flyout — vertical list, opens to the right */}
+                            <div
+                              className={`absolute left-full top-0 z-50 w-64 transition-all duration-150 ${
+                                isSubOpen
+                                  ? "visible opacity-100"
+                                  : "invisible opacity-0"
+                              }`}
+                            >
+                              <div className="flex flex-col gap-0.5 rounded-xl border border-neutral-100 bg-white p-2 shadow-xl">
+                                {item.children.map((child) => (
+                                  <Link
+                                    key={child.label}
+                                    to={child.to}
+                                    onClick={closeDesktopMenus}
+                                    className="block w-full rounded-lg px-4 py-2.5 text-left text-xs font-semibold uppercase tracking-wide text-navy-900 transition-colors hover:bg-accent-500/10 hover:text-accent-600"
+                                  >
+                                    {child.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <Link
+                            key={item.label}
+                            to={item.to}
+                            onClick={closeDesktopMenus}
+                            className="block w-full rounded-lg px-4 py-2.5 text-left text-xs font-semibold uppercase tracking-wide text-navy-900 transition-colors hover:bg-accent-500/10 hover:text-accent-600"
+                          >
+                            {item.label}
+                          </Link>
+                        );
+                      })}
                     </div>
-                  )}
+                  </div>
                 </div>
               );
             })}
           </nav>
 
           {/* Phone + CTA (desktop) */}
-          <div className="hidden shrink-0 items-center gap-4 lg:flex">
+          <div className="hidden shrink-0 items-center gap-3 lg:flex xl:gap-4">
             <a
               href={`tel:${COMPANY.phone.replace(/\D/g, "")}`}
               className="flex items-center gap-2 text-navy-900"
@@ -207,7 +263,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setIsOpen((prev) => !prev)}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-900/5 text-navy-900 lg:hidden"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-navy-900/5 text-navy-900 lg:hidden"
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
           >

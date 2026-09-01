@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { SERVICES } from "../../data/transportData";
+import ServiceModal from "./ServiceModal";
 
 export default function Services() {
+  const [selectedService, setSelectedService] = useState(null);
+
   return (
     <section id="services" className="w-full bg-white py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -19,7 +23,16 @@ export default function Services() {
           {SERVICES.map((service) => (
             <article
               key={service.title}
-              className="group flex flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+              role="button"
+              tabIndex={0}
+              onClick={() => setSelectedService(service)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  setSelectedService(service);
+                }
+              }}
+              className="group flex cursor-pointer flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="h-44 w-full overflow-hidden">
                 <img
@@ -59,6 +72,14 @@ export default function Services() {
           </article>
         </div>
       </div>
+
+      {selectedService && (
+        <ServiceModal
+          key={selectedService.title}
+          service={selectedService}
+          onClose={() => setSelectedService(null)}
+        />
+      )}
     </section>
   );
 }

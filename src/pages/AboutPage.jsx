@@ -1,6 +1,7 @@
 import AboutHero from "../components/AboutPage/AboutHero";
 import OurJourney from "../components/AboutPage/OurJourney";
 import CoreValues from "../components/AboutPage/CoreValues";
+import BusinessSectors from "../components/AboutPage/BusinessSectors";
 import WhyChooseUs from "../components/AboutPage/WhyChooseUs";
 import MissionVision from "../components/AboutPage/MissionVision";
 import Leadership from "../components/AboutPage/Leadership";
@@ -15,6 +16,7 @@ export default function AboutPage() {
       <AboutHero />
       <OurJourney />
       <CoreValues />
+      <BusinessSectors />
       <WhyChooseUs />
       <MissionVision />
       <Leadership />

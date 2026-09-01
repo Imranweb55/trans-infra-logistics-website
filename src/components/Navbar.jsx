@@ -6,25 +6,27 @@ import { COMPANY, NAV_LINKS } from "../data/siteData";
 
 // Dropdown content for specific nav tabs only ("About Us" and "Services").
 // Every other tab in NAV_LINKS stays a plain link, untouched.
-// NOTE: "About Us" sub-items don't have dedicated sections yet, so they
-// link to "/about" for now. "Services" sub-items deep-link into the real
-// Services page (/services?service=<param>), which reads that query
-// param and shows the matching service's detail panel.
+// "About Us" > "Company Profile"/"History" don't have dedicated sections
+// yet, so they link to "/about" for now. "About Us" > "Business Sectors"
+// children deep-link into the real About page (/about?sector=<param>),
+// which reads that query param and shows the matching sector's detail
+// panel. "Services" sub-items deep-link the same way
+// (/services?service=<param>).
 const NAV_SUBMENUS = {
   "About Us": [
     { label: "Company Profile", to: "/about" },
     { label: "History", to: "/about" },
     {
       label: "Business Sectors",
-      to: "/about",
+      to: "/about?sector=wind-energy",
       children: [
-        { label: "Wind Energy", to: "/about" },
-        { label: "Steel Plants", to: "/about" },
-        { label: "Heavy Engineering", to: "/about" },
-        { label: "Imports & Exports", to: "/about" },
-        { label: "Power Plants", to: "/about" },
-        { label: "Cement Plants", to: "/about" },
-        { label: "Infrastructure", to: "/about" },
+        { label: "Wind Energy", to: "/about?sector=wind-energy" },
+        { label: "Steel Plants", to: "/about?sector=steel-plants" },
+        { label: "Heavy Engineering", to: "/about?sector=heavy-engineering" },
+        { label: "Imports & Exports", to: "/about?sector=imports-exports" },
+        { label: "Power Plants", to: "/about?sector=power-plants" },
+        { label: "Cement Plants", to: "/about?sector=cement-plants" },
+        { label: "Infrastructure", to: "/about?sector=infrastructure" },
       ],
     },
   ],

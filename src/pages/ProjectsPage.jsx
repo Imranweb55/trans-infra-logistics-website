@@ -1,7 +1,7 @@
 import ProjectsHero from "../components/ProjectsPage/ProjectsHero";
 import ProjectCategories from "../components/ProjectsPage/ProjectCategories";
 import ProjectStats from "../components/ProjectsPage/ProjectStats";
-import TrustBand from "../components/ProjectsPage/TrustBand";
+// import TrustBand from "../components/ProjectsPage/TrustBand";
 import ProjectsCTA from "../components/ProjectsPage/ProjectsCTA";
 
 // Projects page — matches the supplied UI reference's layout, coloring and
@@ -14,7 +14,7 @@ export default function ProjectsPage() {
       <ProjectsHero />
       <ProjectCategories />
       <ProjectStats />
-      <TrustBand />
+      {/* <TrustBand /> */}
       <ProjectsCTA />
     </main>
   );

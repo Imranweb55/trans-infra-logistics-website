@@ -1,28 +1,28 @@
 import {
   Settings2,
   Truck,
-  Wind,
+  // Wind,
   Layers,
-  Construction,
-  ArrowUpFromLine,
-  PackageSearch,
-  Warehouse,
+  // Construction,
+  // ArrowUpFromLine,
+  // PackageSearch,
+  // Warehouse,
 } from "lucide-react";
-import hydraulicAxleTrailer from "../../assets/images/services/hydraulic-axle-trailer.jpg";
-import primeMover from "../../assets/images/fleet/prime-mover.jpg";
-import windBladeTrailer from "../../assets/images/services/wind-blade-trailer.jpg";
-import windTurbineTransport from "../../assets/images/fleet/wind-turbine-transport.jpg";
-import lowBedTrailer from "../../assets/images/services/low-bed-trailer.jpg";
-import semiLowBedTrailer from "../../assets/images/services/semi-low-bed-trailer.jpg";
-import flatBedTrailer from "../../assets/images/services/flat-bed-trailer.jpg";
-import highwayHaul1 from "../../assets/images/fleet/highway-haul-1.jpg";
-import highwayHaul2 from "../../assets/images/fleet/highway-haul-2.jpg";
-import heroFallback from "../../assets/images/hero-fallback.jpg";
-import crawlerCrane from "../../assets/images/services/crawler-crane.jpg";
-import tyreMountedCrane from "../../assets/images/services/tyre-mounted-crane.jpg";
-import crawlerCraneSite from "../../assets/images/fleet/crawler-crane-site.jpg";
-import pileDrivingCrane from "../../assets/images/projects/pile-driving-crane.jpg";
-import precastSegmentLift from "../../assets/images/projects/precast-segment-lift.jpg";
+import hydraulicAxleTrailer from "../../assets/images/fleet/fleet-images/fleet-img-1.png";
+import primeMover from "../../assets/images/fleet/fleet-images/fleet-img-2.png";
+import windBladeTrailer from "../../assets/images/fleet/fleet-images/fleet-img-3.png";
+import windTurbineTransport from "../../assets/images/fleet/fleet-images/fleet-img-4.png";
+import lowBedTrailer from "../../assets/images/fleet/fleet-images/fleet-img-5.png";
+import semiLowBedTrailer from "../../assets/images/fleet/fleet-images/fleet-img-6.png";
+import flatBedTrailer from "../../assets/images/fleet/fleet-images/fleet-img-7.png";
+import highwayHaul1 from "../../assets/images/fleet/fleet-images/fleet-img-8.png";
+import highwayHaul2 from "../../assets/images/fleet/fleet-images/fleet-img-9.png";
+import heroFallback from "../../assets/images/fleet/fleet-images/fleet-img-10.png";
+import crawlerCrane from "../../assets/images/fleet/fleet-images/fleet-img-11.png";
+import tyreMountedCrane from "../../assets/images/fleet/fleet-images/fleet-img-12.png";
+import crawlerCraneSite from "../../assets/images/fleet/fleet-images/fleet-img-13.png";
+import pileDrivingCrane from "../../assets/images/fleet/fleet-images/fleet-img-14.png";
+import precastSegmentLift from "../../assets/images/fleet/fleet-images/fleet-img-15.png";
 
 // The reference UI lists 15 fleet categories. We only have photos of our
 // road-haulage trailers and cranes on hand — there's no dedicated photo yet
@@ -32,91 +32,91 @@ import precastSegmentLift from "../../assets/images/projects/precast-segment-lif
 // entry uses a genuinely matching existing image.
 export const FLEET_ITEMS = [
   {
-    icon: Settings2,
+    // icon: Settings2,
     title: "Hydraulic Axles",
     count: "90 nos",
     image: hydraulicAxleTrailer,
   },
   {
-    icon: Truck,
+    // icon: Truck,
     title: "Pullers",
     count: "25 nos",
     image: primeMover,
   },
   {
-    icon: Wind,
+    // icon: Wind,
     title: "Windmill Blade Telescopic Trailers",
     count: "50 nos",
     image: windBladeTrailer,
   },
   {
-    icon: Wind,
+    // icon: Wind,
     title: "Windmill Tower Trailers",
     count: "50 nos",
     image: windTurbineTransport,
   },
   {
-    icon: Layers,
+    // icon: Layers,
     title: "Low Bed Trailers",
     count: "25 nos",
     image: lowBedTrailer,
   },
   {
-    icon: Layers,
+    // icon: Layers,
     title: "Semi Low Bed Trailers",
     count: "20 nos",
     image: semiLowBedTrailer,
   },
   {
-    icon: Layers,
+    // icon: Layers,
     title: "High Bed Trailers",
     count: "30 nos",
     image: flatBedTrailer,
   },
   {
-    icon: Truck,
+    // icon: Truck,
     title: "Trucks",
     count: "50 nos",
     image: highwayHaul1,
   },
   {
-    icon: Truck,
+    // icon: Truck,
     title: "Platform Trucks",
     count: "30 nos",
     image: highwayHaul2,
   },
   {
-    icon: Truck,
+    // icon: Truck,
     title: "LCVs",
     count: "60 nos",
     image: heroFallback, // placeholder — no dedicated LCV photo available yet
   },
   {
-    icon: Construction,
+    // icon: Construction,
     title: "Crawler Cranes of Different Capacities",
     count: "35 nos",
     image: crawlerCrane,
   },
   {
-    icon: Construction,
+    // icon: Construction,
     title: "Tyre Mounted Cranes of Different Capacities",
     count: "30 nos",
     image: tyreMountedCrane,
   },
   {
-    icon: ArrowUpFromLine,
+    // icon: ArrowUpFromLine,
     title: "Manlifts",
     count: "12 nos",
     image: crawlerCraneSite, // placeholder — no dedicated manlift photo available yet
   },
   {
-    icon: PackageSearch,
+    // icon: PackageSearch,
     title: "Forklift Trucks",
     count: "15 nos",
     image: pileDrivingCrane, // placeholder — no dedicated forklift photo available yet
   },
   {
-    icon: Warehouse,
+    // icon: Warehouse,
     title: "Reach Trucks",
     count: "9 nos",
     image: precastSegmentLift, // placeholder — no dedicated reach truck photo available yet

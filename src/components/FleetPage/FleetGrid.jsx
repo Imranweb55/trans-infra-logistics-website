@@ -13,7 +13,7 @@ export default function FleetGrid() {
 
         <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
           {FLEET_ITEMS.map((item) => {
-            const Icon = item.icon;
+            // const Icon = item.icon;
             return (
               <article
                 key={item.title}
@@ -26,9 +26,9 @@ export default function FleetGrid() {
                     loading="lazy"
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
-                  <span className="absolute bottom-2 left-1/2 flex h-9 w-9 -translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-navy-900 text-accent-500 shadow-md">
+                  {/* <span className="absolute bottom-2 left-1/2 flex h-9 w-9 -translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-navy-900 text-accent-500 shadow-md">
                     <Icon size={16} />
-                  </span>
+                  </span> */}
                 </div>
                 <div className="p-4 pt-6 text-center">
                   <h3 className="text-sm font-bold leading-snug text-navy-900">

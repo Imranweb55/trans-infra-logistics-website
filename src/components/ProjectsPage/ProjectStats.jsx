@@ -5,8 +5,8 @@ import { ClipboardCheck, Award, Handshake, Truck, Map } from "lucide-react";
 // when available.
 const PROJECT_STATS = [
   { icon: ClipboardCheck, value: "1200+", label: "Projects Completed" },
-  { icon: Award, value: "15+", label: "Years of Experience" },
-  { icon: Handshake, value: "500+", label: "Client Partnerships" },
+  { icon: Award, value: "30+", label: "Years of Experience" },
+  { icon: Handshake, value: "3000+", label: "Client Partnerships" },
   { icon: Truck, value: "2500+", label: "Successful Deliveries" },
   { icon: Map, value: "PAN India", label: "Project Presence" },
 ];

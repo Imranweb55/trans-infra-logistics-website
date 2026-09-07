@@ -33,6 +33,7 @@ export const NAV_LINKS = [
   { label: "Services", to: "/services" },
   { label: "Fleet", to: "/fleet" },
   { label: "Clients Projects", to: "/projects" },
+  // { label: "Clients Testimonials", to: "#" },
   { label: "Careers", to: "/careers" },
   { label: "News", to: "/news" },
   { label: "Contact Us", to: "/contact" },
@@ -41,10 +42,10 @@ export const NAV_LINKS = [
 // Headline figures shown on the homepage stats bar. These mirror the
 // supplied UI reference — replace with audited figures when available.
 export const STATS = [
-  { value: "15+", label: "Years of Experience" },
-  { value: "500+", label: "Fleet Strength" },
-  { value: "1200+", label: "Projects Completed" },
-  { value: "250+", label: "Happy Clients" },
+  { value: "30+", label: "Years of Experience" },
+  { value: "1200+", label: "Fleet Strength" },
+  { value: "3000+", label: "Projects Completed" },
+  { value: "2000+", label: "Happy Clients" },
   { value: "24/7", label: "Support" },
 ];
 

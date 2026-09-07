@@ -1,7 +1,15 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Phone, MessageCircle, Mail, ArrowRight } from "lucide-react";
-import heroBg from "../../assets/landing-page-bg-img/bg-img.png";
+import heroBg1 from "../../assets/landing-page-bg-img/bg-img.png";
+import heroBg2 from "../../assets/landing-page-bg-img/bg-img-2.png";
+import heroBg3 from "../../assets/landing-page-bg-img/bg-img-3.png";
+import heroBg4 from "../../assets/landing-page-bg-img/bg-img-4.png";
+import heroBg5 from "../../assets/landing-page-bg-img/bg-img-5.png";
 import { COMPANY } from "../../data/siteData";
+
+// Background carousel slides — auto-rotates behind the hero content.
+const heroSlides = [heroBg1, heroBg2, heroBg3, heroBg4, heroBg5];
 
 const floatingContacts = [
   {
@@ -18,17 +26,42 @@ const floatingContacts = [
 ];
 
 export default function Hero() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  // Auto-advance the background carousel every 3 seconds.
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Left-to-right slide transition: the active slide sits at 0, the one
+  // that just finished being active slides fully out to the left, and
+  // every other slide waits off-screen to the right so it can slide in.
+  const getSlidePosition = (index) => {
+    if (index === activeSlide) return "translate-x-0";
+    const prevIndex = (activeSlide - 1 + heroSlides.length) % heroSlides.length;
+    if (index === prevIndex) return "-translate-x-full";
+    return "translate-x-full";
+  };
+
   return (
     <section
       id="home"
       className="relative flex min-h-[640px] w-full items-center overflow-hidden bg-navy-950 pt-32 pb-20 sm:min-h-[720px] lg:pt-40"
     >
-      {/* Background photograph */}
-      <img
-        src={heroBg}
-        alt="Trans Infra Logistics heavy haulage truck transporting an oversized industrial vessel on the highway"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
+      {/* Background photograph carousel */}
+      {heroSlides.map((slide, index) => (
+        <img
+          key={slide}
+          src={slide}
+          alt="Trans Infra Logistics heavy haulage truck transporting an oversized industrial vessel on the highway"
+          className={`absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-in-out ${getSlidePosition(
+            index,
+          )}`}
+        />
+      ))}
       {/* Gradient overlay for legible text, matching the reference's dark left / lighter right treatment */}
       <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-850/85 to-navy-950/20" />
       {/* <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-navy-950/40" /> */}

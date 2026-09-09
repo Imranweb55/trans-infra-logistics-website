@@ -13,11 +13,10 @@ const CLIENT_LABELS = [
   "Powering Renewable Projects with Precision",
   "Built Around Precision & Performance",
   "Engineering Excellence, Delivered Reliably",
-  "Infrastructure Development Firm",
-  "Power Generation Company",
-  "Cement Manufacturer",
-  "Import & Export Logistics Partner",
-  "Pan-India Project Client",
+  "Keeping Wind Energy Moving",
+  "Infrastructure Moves. Progress Moves",
+  "Reliability That Keeps Renewable Assets Moving",
+  "Precision for Complex Infrastructure",
 ];
 
 // Same left-to-right slide-carousel mechanics as HomePage/Hero.jsx,
@@ -30,7 +29,7 @@ export default function TestimonialsHero() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 1000);
+    }, 3000);
     return () => clearInterval(timer);
   }, []);
 

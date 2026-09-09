@@ -1,21 +1,21 @@
 import heroBg1 from "../../assets/images/testimonials-images/testimonails-img-1.png";
 import heroBg2 from "../../assets/images/testimonials-images/testimonails-img-2.png";
 import heroBg3 from "../../assets/images/testimonials-images/testimonails-img-3.png";
-import heroBg4 from "../../assets/landing-page-bg-img/bg-img-4.png";
-import heroBg5 from "../../assets/landing-page-bg-img/bg-img-5.png";
-import fleetImg1 from "../../assets/images/fleet/fleet-images/fleet-img-1.png";
-import fleetImg2 from "../../assets/images/fleet/fleet-images/fleet-img-2.png";
-import fleetImg3 from "../../assets/images/fleet/fleet-images/fleet-img-3.png";
-import fleetImg4 from "../../assets/images/fleet/fleet-images/fleet-img-4.png";
-import fleetImg5 from "../../assets/images/fleet/fleet-images/fleet-img-5.png";
-import fleetImg6 from "../../assets/images/fleet/fleet-images/fleet-img-6.png";
-import fleetImg7 from "../../assets/images/fleet/fleet-images/fleet-img-7.png";
-import fleetImg8 from "../../assets/images/fleet/fleet-images/fleet-img-8.png";
-import fleetImg9 from "../../assets/images/fleet/fleet-images/fleet-img-9.png";
-import fleetImg10 from "../../assets/images/fleet/fleet-images/fleet-img-10.png";
-import fleetImg11 from "../../assets/images/fleet/fleet-images/fleet-img-11.png";
-import fleetImg12 from "../../assets/images/fleet/fleet-images/fleet-img-12.png";
-import fleetImg13 from "../../assets/images/fleet/fleet-images/fleet-img-13.png";
+import heroBg4 from "../../assets/images/testimonials-images/testimonails-img-4.jpg";
+import heroBg5 from "../../assets/images/testimonials-images/testimonails-img-5.png";
+import fleetImg1 from "../../assets/images/testimonials-images/testimonails-img-6.png";
+import fleetImg2 from "../../assets/images/testimonials-images/testimonails-img-7.png";
+import fleetImg3 from "../../assets/images/testimonials-images/testimonails-img-8.png";
+import fleetImg4 from "../../assets/images/testimonials-images/clients-images/client01.png";
+import fleetImg5 from "../../assets/images/testimonials-images/clients-images/client02.png";
+import fleetImg6 from "../../assets/images/testimonials-images/clients-images/client03.png";
+import fleetImg7 from "../../assets/images/testimonials-images/clients-images/client04.png";
+import fleetImg8 from "../../assets/images/testimonials-images/clients-images/client06.png";
+import fleetImg9 from "../../assets/images/testimonials-images/clients-images/client07.png";
+import fleetImg10 from "../../assets/images/testimonials-images/clients-images/client08.png";
+import fleetImg11 from "../../assets/images/testimonials-images/clients-images/client09.png";
+import fleetImg12 from "../../assets/images/testimonials-images/clients-images/client10.png";
+import fleetImg13 from "../../assets/images/testimonials-images/clients-images/client11.png";
 import fleetImg14 from "../../assets/images/fleet/fleet-images/fleet-img-14.png";
 import fleetImg15 from "../../assets/images/fleet/fleet-images/fleet-img-15.png";
 import hydraulicAxleTrailer from "../../assets/images/services/hydraulic-axle-trailer.jpg";
@@ -63,33 +63,33 @@ export const HERO_SLIDES = [
   },
   {
     image: heroBg4,
-    sector: "Infrastructure",
+    sector: "Welspun New Energy",
     quote:
-      "From girder launches to segment placement, Trans Infra kept our corridor project moving on schedule.",
+      "Their ability to manage critical project movements with precision and responsiveness has been invaluable. Every delivery was handled with the level of coordination and reliability our renewable-energy projects require.",
   },
   {
     image: heroBg5,
-    sector: "Power Plants",
+    sector: "Suzlon",
     quote:
-      "Turbine and boiler components reached site right on our commissioning timeline, every time.",
+      "Large-scale wind projects demand flawless coordination and dependable execution. Their commitment to safety, precision and timely movement has helped us keep critical project activities moving efficiently",
   },
   {
     image: fleetImg1,
-    sector: "Cement Industry",
+    sector: "J. Kumar Infraprojects",
     quote:
-      "Reliable scheduling meant zero downtime during our kiln equipment changeover.",
+      "Their professional coordination and dependable execution helped us manage critical project movements efficiently. Their ability to work around demanding infrastructure schedules made a real difference.",
   },
   {
     image: fleetImg2,
-    sector: "Imports & Exports",
+    sector: "RENOM",
     quote:
-      "The inland leg of our shipment was handled with the same care and urgency as the ocean freight.",
+      "In renewable-energy operations, every hour matters. Their responsive coordination and dependable movement of critical equipment have supported our maintenance activities and helped us maintain operational efficiency.",
   },
   {
     image: fleetImg3,
-    sector: "Pan-India Reach",
+    sector: "Cemindia Projects Limited",
     quote:
-      "Wherever the site was located, their team and equipment were ready to deliver on time.",
+      "Complex construction projects require logistics partners who understand precision, coordination and deadlines. Their professional execution and commitment to project requirements made every critical movement more efficient.",
   },
 ];
 

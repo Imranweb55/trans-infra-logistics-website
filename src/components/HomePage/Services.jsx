@@ -57,16 +57,31 @@ export default function Services() {
           ))}
 
           {/* Signature dark card, matching the reference's closing tile */}
-          <article className="flex flex-col justify-center rounded-xl bg-navy-900 p-6 text-center text-white shadow-sm">
-            <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border-2 border-accent-500 text-accent-500">
+          <article className="relative flex flex-col justify-center overflow-hidden rounded-xl bg-navy-900 p-6 text-center text-white shadow-lg">
+            {/* Decorative diagonal line texture */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-[0.07]"
+              style={{
+                backgroundImage:
+                  "repeating-linear-gradient(45deg, #ffffff 0px, #ffffff 1px, transparent 1px, transparent 14px)",
+              }}
+              aria-hidden="true"
+            />
+            {/* Soft accent glow in the corner */}
+            <div
+              className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent-500/20 blur-3xl"
+              aria-hidden="true"
+            />
+
+            <span className="relative mx-auto flex h-14 w-14 items-center justify-center rounded-full border-2 border-accent-500 text-accent-500">
               <ShieldCheck size={26} />
             </span>
-            <h3 className="mt-4 text-lg font-extrabold leading-snug">
+            <h3 className="relative mt-4 text-lg font-extrabold leading-snug">
               Safety. Precision.
               <br />
               Performance.
             </h3>
-            <p className="mt-2 text-sm text-neutral-300">
+            <p className="relative mt-2 text-sm text-neutral-300">
               Every load is important. Every delivery is our commitment.
             </p>
           </article>

@@ -12,8 +12,18 @@ export default function FleetWhyChoose() {
   return (
     <section className="w-full bg-white pb-8 sm:pb-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl bg-navy-900 p-6 sm:p-8">
-          <div className="grid gap-8 lg:grid-cols-[1fr_1.6fr] lg:items-center">
+        <div className="relative overflow-hidden rounded-2xl bg-navy-900 p-6 sm:p-8">
+          {/* Decorative diagonal line texture */}
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.07]"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(45deg, #ffffff 0px, #ffffff 1px, transparent 1px, transparent 14px)",
+            }}
+            aria-hidden="true"
+          />
+
+          <div className="relative grid gap-8 lg:grid-cols-[1fr_1.6fr] lg:items-center">
             <div>
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-accent-500">
                 Why Choose Our Fleet?

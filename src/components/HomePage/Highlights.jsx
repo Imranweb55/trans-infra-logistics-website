@@ -27,6 +27,15 @@ export default function Highlights() {
         className="absolute inset-0 text-white/5 bg-dot-grid"
         aria-hidden="true"
       />
+      {/* Decorative diagonal line texture */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(45deg, #ffffff 0px, #ffffff 1px, transparent 1px, transparent 14px)",
+        }}
+        aria-hidden="true"
+      />
 
       <div className="relative mx-auto max-w-7xl px-4 pt-16 sm:px-6 lg:px-8">
         <h2 className="text-center text-2xl font-extrabold uppercase tracking-wide text-white sm:text-3xl lg:text-4xl">
@@ -105,8 +114,17 @@ export default function Highlights() {
       </div>
 
       {/* Closing CTA strip */}
-      <div className="relative border-t border-white/10 bg-navy-950 py-10">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 sm:px-6 lg:flex-row lg:items-center lg:px-8">
+      <div className="relative overflow-hidden border-t border-white/10 bg-navy-950 py-10">
+        {/* Decorative diagonal line texture */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(45deg, #ffffff 0px, #ffffff 1px, transparent 1px, transparent 14px)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 sm:px-6 lg:flex-row lg:items-center lg:px-8">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-accent-500">
               Have a project in mind?

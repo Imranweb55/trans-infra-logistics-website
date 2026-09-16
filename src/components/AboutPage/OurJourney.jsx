@@ -31,7 +31,7 @@ const MILESTONES = [
       "Integrated technology for better planning, tracking & safety.",
   },
   {
-    year: "2024+",
+    year: "2026+",
     icon: Rocket,
     title: "Future Ready",
     description: "Continuing to grow with innovation and customer trust.",

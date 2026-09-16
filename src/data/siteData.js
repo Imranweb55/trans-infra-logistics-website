@@ -12,14 +12,15 @@ export const COMPANY = {
     line2: "Near SA Engg. College, Thiruverkadu Post",
     line3: "Thiruvallur District, Chennai – 600077, Tamil Nadu",
   },
-  phone: "044-2680 1883",
+  phone: "91+ 8939978881",
   // NOTE: no company email/WhatsApp number was supplied with the brief —
   // replace this placeholder with the real inbox before going live.
-  email: "info@transinfralogistics.in",
+  email: "Info@transinfra.in",
   social: {
     facebook: "#",
     linkedin: "#",
-    instagram: "#",
+    instagram:
+      "https://www.instagram.com/transinfragroup?stkn=aHQ5YTYxcmljbGRr",
     youtube: "#",
   },
 };

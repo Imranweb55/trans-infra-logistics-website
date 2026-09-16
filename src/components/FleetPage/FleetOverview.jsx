@@ -1,4 +1,74 @@
+import { useEffect, useRef, useState } from "react";
 import { FLEET_SUMMARY } from "./fleetContent";
+
+// Animated counter: parses a value like "30+", "3000+", "24/7" etc,
+// pulls out the leading number, and counts up from 0 -> that number once
+// the element scrolls into view. Non-numeric / no-leading-digit values
+// (e.g. "24/7") are just rendered as-is, untouched.
+function CountUp({ value, duration = 1500 }) {
+  const match = String(value).match(/^(\d+(?:\.\d+)?)(.*)$/);
+  const target = match ? parseFloat(match[1]) : null;
+  const suffix = match ? match[2] : "";
+  const isDecimal = match ? match[1].includes(".") : false;
+
+  const [display, setDisplay] = useState(target === null ? value : 0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (target === null || hasAnimated) return;
+
+    const node = ref.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
+
+            const start = performance.now();
+            const from = 0;
+
+            const step = (now) => {
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              // easeOutCubic for a nice "settle" feel
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = from + (target - from) * eased;
+
+              setDisplay(isDecimal ? current.toFixed(1) : Math.round(current));
+
+              if (progress < 1) {
+                requestAnimationFrame(step);
+              } else {
+                setDisplay(isDecimal ? target.toFixed(1) : target);
+              }
+            };
+
+            requestAnimationFrame(step);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.3 },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [target, hasAnimated, duration, isDecimal]);
+
+  if (target === null) {
+    return <span ref={ref}>{value}</span>;
+  }
+
+  return (
+    <span ref={ref}>
+      {display}
+      {suffix}
+    </span>
+  );
+}
 
 export default function FleetOverview() {
   return (
@@ -32,7 +102,7 @@ export default function FleetOverview() {
                     <Icon size={18} />
                   </span>
                   <p className="mt-2 text-2xl font-extrabold text-navy-900">
-                    {value}
+                    <CountUp value={value} />
                   </p>
                   <p className="text-xs text-neutral-500">{label}</p>
                 </div>

@@ -59,14 +59,14 @@ export default function Services() {
           {/* Signature dark card, matching the reference's closing tile */}
           <article className="relative flex flex-col justify-center overflow-hidden rounded-xl bg-navy-900 p-6 text-center text-white shadow-lg">
             {/* Decorative diagonal line texture */}
-            <div
+            {/* <div
               className="pointer-events-none absolute inset-0 opacity-[0.07]"
               style={{
                 backgroundImage:
                   "repeating-linear-gradient(45deg, #ffffff 0px, #ffffff 1px, transparent 1px, transparent 14px)",
               }}
               aria-hidden="true"
-            />
+            /> */}
             {/* Soft accent glow in the corner */}
             <div
               className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent-500/20 blur-3xl"
